@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+    <className>com.dmsdbj.team3.tools.yaml.YamlUtil</className>
+    <student>
+        <!--
+        子元素student
+        id属性同样可以作为student的子元素
+        为了演示方便，这里将其作为属性
+    -->
+        <student id="123">
+            <!--
+                student有三个子元素
+                name、age、gender
+             -->
+            <name>Lixiaolong</name>
+            <age>22</age>
+            <gender>male</gender>
+        </student>
+        <!--同上-->
+        <student id="456">
+            <name>Baijing</name>
+            <age>23</age>
+            <gender>femal</gender>
+        </student>
+        <!--同上-->
+        <student id="789">
+            <name>Wangxiaobo</name>
+            <age>24</age>
+            <gender>femal</gender>
+        </student>
+    </student>
+</config>
