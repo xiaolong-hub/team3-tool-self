@@ -26,7 +26,7 @@ public class PdfUtil {
     private static Font keyfont;
     private static Font textfont;
 
-    //设置PDF内容的字体类型和F大小
+    //设置PDF内容的字体类型和大小
     static {
         BaseFont bfChinese;
         try {
@@ -43,11 +43,12 @@ public class PdfUtil {
         }
     }
 
-    //生成PDF
+    //生成PDF的构造方法
     public PdfUtil(File file) throws FileNotFoundException, DocumentException {
         //设置页面大小
         document.setPageSize(PageSize.A4);
         try {
+            //利用反射获取PdfWriter的具体类
             PdfWriter.getInstance(document, new FileOutputStream(file));
             document.open();
         } catch (DocumentException e) {
@@ -92,12 +93,13 @@ public class PdfUtil {
         return cell;
     }
 
-    //创建表格
+    //创建表格,colNumber为生成的表格列数
     public PdfPTable createTable(int colNumber) {
         PdfPTable table = new PdfPTable(colNumber);
         table.setTotalWidth(maxWidth);
         table.setLockedWidth(true);
         table.setHorizontalAlignment(Element.ALIGN_CENTER);
+        //表格线的粗细宽度
         table.getDefaultCell().setBorder(1);
         return table;
     }
@@ -105,14 +107,17 @@ public class PdfUtil {
 
     //生成具体的PDF
     public void generatePDF() {
-        //生成表格
+        //生成表格具体列数
         PdfPTable table = createTable(4);
+        //表格名字
         table.addCell(createCell("学生信息列表：", keyfont,Element.ALIGN_LEFT,4,false));
+        //各列头内容
         table.addCell(createCell("姓名", keyfont, Element.ALIGN_CENTER));
         table.addCell(createCell("年龄", keyfont, Element.ALIGN_CENTER));
         table.addCell(createCell("性别", keyfont, Element.ALIGN_CENTER));
         table.addCell(createCell("住址", keyfont, Element.ALIGN_CENTER));
 
+        //表格行数
         for (int i = 0; i < 5; i++) {
             table.addCell(createCell("姓名" + i, textfont));
             table.addCell(createCell(i + 15 + "", textfont));

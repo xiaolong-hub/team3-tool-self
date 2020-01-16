@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class Test {
     public static void main(String[] args) throws IOException, DocumentException {
-        String path = "/Users/lanan/Downloads/team3toolself/excelToolTest.xlsx";
+        String path = "/Users/lanan/Downloads/team3toolself/excelToolTest.pdf";
         File file = new File(path);
         file.createNewFile();
         new PdfUtil(file).generatePDF();
